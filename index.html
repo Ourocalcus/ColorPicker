@@ -3,10 +3,38 @@
 <head>
   <meta charset="UTF-8">
   <title>Color Picker</title>
+
+  <!-- Montserrat font -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
   <style>
-    body { font-family: sans-serif; padding: 20px; }
-    input[type=color] { width: 100%; height: 80px; border: none; }
-    #hex { font-size: 20px; margin-top: 10px; }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      padding: 20px;
+      background: #000; /* optional: makes the white text pop */
+      color: #fff; /* all text white */
+    }
+
+    h2 {
+      color: #fff;
+      font-weight: 600;
+    }
+
+    input[type=color] {
+      width: 100%;
+      height: 80px;
+      border: 2px solid #fff; /* white outline */
+      border-radius: 6px;
+      background: none;
+      padding: 0;
+    }
+
+    #hex {
+      font-size: 20px;
+      margin-top: 10px;
+      color: #fff; /* white hex text */
+      font-weight: 400;
+    }
   </style>
 </head>
 <body>
@@ -17,6 +45,7 @@
   <script>
     const picker = document.getElementById("picker");
     const hex = document.getElementById("hex");
+
     picker.addEventListener("input", () => {
       hex.textContent = picker.value;
     });
