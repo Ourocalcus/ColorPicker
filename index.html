@@ -32,7 +32,7 @@
       margin: 0;
     }
 
-    /* Wrapper that Tally cannot stretch */
+    /* Wrapper that prevents iframe scaling distortion */
     #pickerWrapper {
       width: 240px;
       height: 240px;
@@ -125,22 +125,12 @@
   </div>
 
   <script>
+    /* Force iro.js to render without stretching */
+    window.devicePixelRatio = 1;
+
     const colorPicker = new iro.ColorPicker("#colorWheel", {
       width: 240,
-      height: 240,
-
-      /* Force iro.js to render at a fixed pixel ratio */
-      handleRadius: 8,
-      padding: 0,
-      wheelAngle: 0,
-      wheelDirection: "clockwise",
-
-      css: {
-        "#colorWheel": {
-          width: "240px",
-          height: "240px"
-        }
-      },
+      color: "#ffffff",
 
       layout: [
         { component: iro.ui.Wheel },
