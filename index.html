@@ -32,26 +32,30 @@
       margin: 0;
     }
 
-    /* Wheel wrapper ring */
-    #colorWheel {
-      padding: 4px;
-      border-radius: 50%;
-      border: 2px solid #fff;
-      display: inline-block;
-    }
+    //* Force the wheel to stay perfectly round */
+#colorWheel {
+  width: 240px;
+  height: 240px;
+  padding: 4px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  box-sizing: content-box;
+}
 
-    /* Actual wheel graphic */
-    .iro__wheel {
-      border-radius: 50%;
-      overflow: hidden;
-    }
+/* Actual wheel canvas */
+.iro__wheel {
+  border-radius: 50%;
+  border: 2px solid white;
+}
 
-    /* Slider borders */
-    .iro__slider {
-      border: 2px solid #fff !important;
-      border-radius: 6px !important;
-      margin-top: 4px !important;
-    }
+/* Slider borders */
+.iro__slider {
+  border: 2px solid white !important;
+  border-radius: 6px !important;
+  padding: 2px !important;
+  margin-top: 4px !important;
+}
+
 
     .row {
       display: flex;
