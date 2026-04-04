@@ -32,31 +32,31 @@
       margin: 0;
     }
 
-    //* Force the wheel to stay perfectly round */
-#colorWheel {
-  width: 240px;
-  height: 240px;
-  padding: 4px;
-  border-radius: 50%;
-  border: 2px solid #fff;
-  box-sizing: content-box;
-}
+    /* Force the wheel to stay perfectly round */
+    #colorWheel {
+      width: 240px;
+      height: 240px;
+      padding: 4px;
+      border-radius: 50%;
+      border: 2px solid #fff;
+      box-sizing: content-box;
+    }
 
-/* Actual wheel canvas */
-.iro__wheel {
-  border-radius: 50%;
-  border: 2px solid white;
-}
+    /* Actual wheel canvas */
+    .iro__wheel {
+      border-radius: 50%;
+      border: 2px solid white;
+    }
 
-/* Slider borders */
-.iro__slider {
-  border: 2px solid white !important;
-  border-radius: 6px !important;
-  padding: 2px !important;
-  margin-top: 4px !important;
-}
+    /* Slider borders */
+    .iro__slider {
+      border: 2px solid white !important;
+      border-radius: 6px !important;
+      padding: 2px !important;
+      margin-top: 4px !important;
+    }
 
-
+    /* Side-by-side layout */
     .row {
       display: flex;
       justify-content: center;
@@ -93,9 +93,11 @@
     <div id="colorWheel"></div>
   </div>
 
+  <!-- Native system color picker -->
   <input type="color" id="nativePicker">
   <button class="native-btn" onclick="nativePicker.click()">Screen Picker</button>
 
+  <!-- Side-by-side HEX + RGB -->
   <div class="row">
     <div id="hex">Hex: #ffffff</div>
     <div id="rgb">RGB: 255, 255, 255</div>
@@ -108,7 +110,7 @@
 
   <script>
     const colorPicker = new iro.ColorPicker("#colorWheel", {
-      width: 240, // slightly smaller to reduce height
+      width: 240,
       color: "#ffffff",
       layout: [
         { component: iro.ui.Wheel },
