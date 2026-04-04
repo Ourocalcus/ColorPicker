@@ -14,7 +14,7 @@
     body {
       font-family: 'Montserrat', sans-serif;
       margin: 0;
-      padding: 10px 0;
+      padding: 8px 0;
       background: transparent;
       color: #fff;
       text-align: center;
@@ -22,8 +22,8 @@
 
     h2 {
       font-weight: 600;
-      margin: 0 0 10px 0;
-      font-size: 20px;
+      margin: 0 0 8px 0;
+      font-size: 18px;
     }
 
     #pickerContainer {
@@ -32,33 +32,39 @@
       margin: 0;
     }
 
-    /* Add white border around wheel */
+    /* Wheel wrapper ring */
     #colorWheel {
-      border: 2px solid white;
-      border-radius: 50%;
       padding: 4px;
+      border-radius: 50%;
+      border: 2px solid #fff;
+      display: inline-block;
     }
 
-    /* Add white borders to sliders */
+    /* Actual wheel graphic */
+    .iro__wheel {
+      border-radius: 50%;
+      overflow: hidden;
+    }
+
+    /* Slider borders */
     .iro__slider {
-      border: 2px solid white !important;
+      border: 2px solid #fff !important;
       border-radius: 6px !important;
-      margin-top: 6px !important;
+      margin-top: 4px !important;
     }
 
-    /* Side-by-side layout */
     .row {
       display: flex;
       justify-content: center;
-      gap: 20px;
-      margin-top: 8px;
-      font-size: 16px;
+      gap: 16px;
+      margin-top: 6px;
+      font-size: 14px;
     }
 
     .copy-btn, .native-btn {
-      margin-top: 6px;
-      padding: 6px 12px;
-      font-size: 14px;
+      margin-top: 4px;
+      padding: 5px 10px;
+      font-size: 13px;
       border: 1px solid #fff;
       background: transparent;
       color: #fff;
@@ -83,11 +89,9 @@
     <div id="colorWheel"></div>
   </div>
 
-  <!-- Native system color picker -->
   <input type="color" id="nativePicker">
   <button class="native-btn" onclick="nativePicker.click()">Screen Picker</button>
 
-  <!-- Side-by-side HEX + RGB -->
   <div class="row">
     <div id="hex">Hex: #ffffff</div>
     <div id="rgb">RGB: 255, 255, 255</div>
@@ -100,7 +104,7 @@
 
   <script>
     const colorPicker = new iro.ColorPicker("#colorWheel", {
-      width: 260,
+      width: 240, // slightly smaller to reduce height
       color: "#ffffff",
       layout: [
         { component: iro.ui.Wheel },
