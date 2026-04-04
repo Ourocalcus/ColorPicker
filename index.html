@@ -48,12 +48,16 @@
       border: 2px solid white;
     }
 
-    /* Slider borders */
+    /* Prevent slider stretching + add border */
     .iro__slider {
+      height: 16px !important;
+      max-height: 16px !important;
+      min-height: 16px !important;
       border: 2px solid white !important;
       border-radius: 6px !important;
       padding: 2px !important;
       margin-top: 4px !important;
+      box-sizing: content-box !important;
     }
 
     /* Side-by-side layout */
