@@ -20,13 +20,6 @@
       text-align: center;
     }
 
-    /* Only apply a dark background when viewed directly on GitHub Pages */
-    @media (display-mode: browser) {
-      body {
-        background: #111;
-      }
-    }
-
     h2 {
       font-weight: 600;
       margin: 0 0 10px 0;
@@ -39,9 +32,26 @@
       margin: 0;
     }
 
-    .info-block {
+    /* Add white border around wheel */
+    #colorWheel {
+      border: 2px solid white;
+      border-radius: 50%;
+      padding: 4px;
+    }
+
+    /* Add white borders to sliders */
+    .iro__slider {
+      border: 2px solid white !important;
+      border-radius: 6px !important;
+      margin-top: 6px !important;
+    }
+
+    /* Side-by-side layout */
+    .row {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
       margin-top: 8px;
-      line-height: 1.4;
       font-size: 16px;
     }
 
@@ -60,7 +70,6 @@
       opacity: 0.6;
     }
 
-    /* Hide the native color input */
     #nativePicker {
       display: none;
     }
@@ -76,14 +85,16 @@
 
   <!-- Native system color picker -->
   <input type="color" id="nativePicker">
-
   <button class="native-btn" onclick="nativePicker.click()">Screen Picker</button>
 
-  <div class="info-block">
+  <!-- Side-by-side HEX + RGB -->
+  <div class="row">
     <div id="hex">Hex: #ffffff</div>
-    <button class="copy-btn" onclick="copyHex()">Copy HEX</button>
+    <div id="rgb">RGB: 255, 255, 255</div>
+  </div>
 
-    <div id="rgb" style="margin-top:6px;">RGB: 255, 255, 255</div>
+  <div class="row">
+    <button class="copy-btn" onclick="copyHex()">Copy HEX</button>
     <button class="copy-btn" onclick="copyRGB()">Copy RGB</button>
   </div>
 
@@ -102,12 +113,10 @@
     const rgbText = document.getElementById("rgb");
     const nativePicker = document.getElementById("nativePicker");
 
-    // Update from iro.js wheel
     colorPicker.on("color:change", (color) => {
       updateValues(color.hexString, color.rgb);
     });
 
-    // Update from native system picker
     nativePicker.addEventListener("input", () => {
       const hex = nativePicker.value;
       const r = parseInt(hex.substring(1, 3), 16);
@@ -115,7 +124,7 @@
       const b = parseInt(hex.substring(5, 7), 16);
 
       updateValues(hex, { r, g, b });
-      colorPicker.color.hexString = hex; // sync wheel
+      colorPicker.color.hexString = hex;
     });
 
     function updateValues(hex, rgb) {
