@@ -7,11 +7,8 @@
   <!-- Montserrat font -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
 
-  <!-- Pickr CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/classic.min.css"/>
-
-  <!-- Pickr JS -->
-  <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr"></script>
+  <!-- iro.js color wheel -->
+  <script src="https://cdn.jsdelivr.net/npm/@jaames/iro@5"></script>
 
   <style>
     body {
@@ -29,19 +26,10 @@
       font-size: 20px;
     }
 
-    /* Center the picker */
     #pickerContainer {
       display: flex;
       justify-content: center;
-      margin-bottom: 10px;
-    }
-
-    /* Force perfect circle + white border */
-    .pcr-app .pcr-color-preview,
-    .pcr-app .pcr-color-palette {
-      border-radius: 50% !important;
-      border: 2px solid white !important;
-      overflow: hidden;
+      margin: 0;
     }
 
     /* Side-by-side HEX + RGB */
@@ -78,72 +66,9 @@
   <h2>Pick a Color</h2>
 
   <div id="pickerContainer">
-    <div id="colorPicker"></div>
+    <div id="colorWheel"></div>
   </div>
 
   <!-- Native system color picker -->
   <input type="color" id="nativePicker">
-  <button class="native-btn" onclick="nativePicker.click()">Screen Picker</button>
-
-  <!-- Side-by-side HEX + RGB -->
-  <div class="row">
-    <div id="hex">Hex: #ffffff</div>
-    <div id="rgb">RGB: 255, 255, 255</div>
-  </div>
-
-  <div class="row">
-    <button class="copy-btn" onclick="copyHex()">Copy HEX</button>
-    <button class="copy-btn" onclick="copyRGB()">Copy RGB</button>
-  </div>
-
-  <script>
-    /* Initialize Pickr */
-    const pickr = Pickr.create({
-      el: '#colorPicker',
-      theme: 'classic',
-
-      default: '#ffffff',
-
-      components: {
-        preview: true,
-        opacity: false,
-        hue: true,
-
-        interaction: {
-          hex: true,
-          rgba: true,
-          input: true,
-          save: false
-        }
-      }
-    });
-
-    const hexText = document.getElementById("hex");
-    const rgbText = document.getElementById("rgb");
-    const nativePicker = document.getElementById("nativePicker");
-
-    /* Update HEX + RGB when Pickr changes */
-    pickr.on('change', (color) => {
-      const hex = color.toHEXA().toString();
-      const rgb = color.toRGBA();
-
-      hexText.textContent = `Hex: ${hex}`;
-      rgbText.textContent = `RGB: ${rgb[0]}, ${rgb[1]}, ${rgb[2]}`;
-    });
-
-    /* Update Pickr when native picker changes */
-    nativePicker.addEventListener("input", () => {
-      pickr.setColor(nativePicker.value);
-    });
-
-    function copyHex() {
-      navigator.clipboard.writeText(hexText.textContent.replace("Hex: ", ""));
-    }
-
-    function copyRGB() {
-      navigator.clipboard.writeText(rgbText.textContent.replace("RGB: ", ""));
-    }
-  </script>
-
-</body>
-</html>
+  <button class="native-btn" onclick="nativePicker.click()">
