@@ -41,7 +41,7 @@
       font-size: 16px;
     }
 
-    .copy-btn, .native-btn {
+    .native-btn {
       margin-top: 6px;
       padding: 6px 12px;
       font-size: 14px;
@@ -52,7 +52,7 @@
       cursor: pointer;
     }
 
-    .copy-btn:active, .native-btn:active {
+    .native-btn:active {
       opacity: 0.6;
     }
 
@@ -77,11 +77,6 @@
   <div class="row">
     <div id="hex">Hex: #ffffff</div>
     <div id="rgb">RGB: 255, 255, 255</div>
-  </div>
-
-  <div class="row">
-    <button class="copy-btn" onclick="copyHex()">Copy HEX</button>
-    <button class="copy-btn" onclick="copyRGB()">Copy RGB</button>
   </div>
 
   <script>
@@ -116,14 +111,6 @@
     function updateValues(hex, rgb) {
       hexText.textContent = `Hex: ${hex}`;
       rgbText.textContent = `RGB: ${rgb.r}, ${rgb.g}, ${rgb.b}`;
-    }
-
-    function copyHex() {
-      navigator.clipboard.writeText(hexText.textContent.replace("Hex: ", ""));
-    }
-
-    function copyRGB() {
-      navigator.clipboard.writeText(rgbText.textContent.replace("RGB: ", ""));
     }
   </script>
 
