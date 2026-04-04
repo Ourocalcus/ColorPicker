@@ -4,7 +4,10 @@
   <meta charset="UTF-8">
   <title>Color Picker</title>
 
+  <!-- Montserrat font -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <!-- iro.js color wheel -->
   <script src="https://cdn.jsdelivr.net/npm/@jaames/iro@5"></script>
 
   <style>
@@ -29,7 +32,7 @@
       margin: 0;
     }
 
-    /* NEW: wrapper that Tally cannot stretch */
+    /* Wrapper that Tally cannot stretch */
     #pickerWrapper {
       width: 240px;
       height: 240px;
@@ -49,11 +52,13 @@
       box-sizing: content-box;
     }
 
+    /* Actual wheel canvas */
     .iro__wheel {
       border-radius: 50%;
       border: 2px solid white;
     }
 
+    /* Prevent slider stretching + add border */
     .iro__slider {
       height: 16px !important;
       max-height: 16px !important;
@@ -65,6 +70,7 @@
       box-sizing: content-box !important;
     }
 
+    /* Side-by-side layout */
     .row {
       display: flex;
       justify-content: center;
@@ -84,6 +90,10 @@
       cursor: pointer;
     }
 
+    .copy-btn:active, .native-btn:active {
+      opacity: 0.6;
+    }
+
     #nativePicker {
       display: none;
     }
@@ -99,9 +109,11 @@
     </div>
   </div>
 
+  <!-- Native system color picker -->
   <input type="color" id="nativePicker">
   <button class="native-btn" onclick="nativePicker.click()">Screen Picker</button>
 
+  <!-- Side-by-side HEX + RGB -->
   <div class="row">
     <div id="hex">Hex: #ffffff</div>
     <div id="rgb">RGB: 255, 255, 255</div>
@@ -115,7 +127,21 @@
   <script>
     const colorPicker = new iro.ColorPicker("#colorWheel", {
       width: 240,
-      color: "#ffffff",
+      height: 240,
+
+      /* Force iro.js to render at a fixed pixel ratio */
+      handleRadius: 8,
+      padding: 0,
+      wheelAngle: 0,
+      wheelDirection: "clockwise",
+
+      css: {
+        "#colorWheel": {
+          width: "240px",
+          height: "240px"
+        }
+      },
+
       layout: [
         { component: iro.ui.Wheel },
         { component: iro.ui.Slider, options: { sliderType: 'saturation' }},
