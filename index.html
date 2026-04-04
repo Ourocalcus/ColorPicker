@@ -13,29 +13,46 @@
   <style>
     body {
       font-family: 'Montserrat', sans-serif;
-      padding: 20px;
-      background: transparent; /* fully transparent */
+      margin: 0;
+      padding: 10px 0; /* reduced vertical padding */
+      background: transparent;
       color: #fff;
       text-align: center;
     }
 
     h2 {
       font-weight: 600;
-      margin-bottom: 20px;
+      margin: 0 0 10px 0; /* very small margin */
       color: #fff;
+      font-size: 20px;
     }
 
     #pickerContainer {
       display: flex;
       justify-content: center;
-      margin-bottom: 20px;
+      margin: 0; /* remove extra spacing */
     }
 
     .info-block {
-      margin-top: 10px;
-      line-height: 1.8;
-      font-size: 18px;
+      margin-top: 8px; /* small spacing */
+      line-height: 1.4;
+      font-size: 16px;
       color: #fff;
+    }
+
+    .copy-btn {
+      margin-top: 6px;
+      padding: 6px 12px;
+      font-size: 14px;
+      border: 1px solid #fff;
+      background: transparent;
+      color: #fff;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .copy-btn:active {
+      opacity: 0.6;
     }
   </style>
 </head>
@@ -49,11 +66,13 @@
 
   <div class="info-block">
     <div id="hex">Hex: #ffffff</div>
-    <div id="rgb">RGB: 255, 255, 255</div>
+    <button class="copy-btn" onclick="copyHex()">Copy HEX</button>
+
+    <div id="rgb" style="margin-top:6px;">RGB: 255, 255, 255</div>
+    <button class="copy-btn" onclick="copyRGB()">Copy RGB</button>
   </div>
 
   <script>
-    // Create the color wheel
     const colorPicker = new iro.ColorPicker("#colorWheel", {
       width: 260,
       color: "#ffffff",
@@ -67,11 +86,18 @@
     const hexText = document.getElementById("hex");
     const rgbText = document.getElementById("rgb");
 
-    // Update text when color changes
     colorPicker.on("color:change", (color) => {
       hexText.textContent = `Hex: ${color.hexString}`;
       rgbText.textContent = `RGB: ${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}`;
     });
+
+    function copyHex() {
+      navigator.clipboard.writeText(hexText.textContent.replace("Hex: ", ""));
+    }
+
+    function copyRGB() {
+      navigator.clipboard.writeText(rgbText.textContent.replace("RGB: ", ""));
+    }
   </script>
 
 </body>
